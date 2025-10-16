@@ -75,12 +75,15 @@ with col3:
             selected_industry = st.selectbox("Industry", list(industries.keys()), key="sub_industry_select")
             new_subindustry = st.text_input("New Sub-Industry:", key="subindustry_input")
             if st.button("➕ Add Sub-Industry", key="add_subindustry"):
-                if new_subindustry and new_subindustry not in sectors[selected_sector_sub][selected_industry]:
-                    sectors[selected_sector_sub][selected_industry][new_subindustry] = []
-                    save_data(sectors)
-                    st.success(f"Added sub-industry: {new_subindustry}")
+                if isinstance(industries[selected_industry], dict):
+                    if new_subindustry and new_subindustry not in industries[selected_industry]:
+                        industries[selected_industry][new_subindustry] = []
+                        save_data(sectors)
+                        st.success(f"Added sub-industry: {new_subindustry}")
+                    else:
+                        st.warning("Sub-industry already exists or invalid.")
                 else:
-                    st.warning("Sub-industry already exists or invalid.")
+                    st.warning("Cannot add sub-industry: Industry already has direct stocks.")
         else:
             st.info("Add an industry first.")
     else:
@@ -95,12 +98,14 @@ with col4:
         industries = sectors[selected_sector_stock]
         if industries:
             selected_industry_stock = st.selectbox("Industry", list(industries.keys()), key="stock_industry_select")
-            subindustries = industries[selected_industry_stock]
-            if subindustries:
-                selected_subindustry_stock = st.selectbox("Sub-Industry", list(subindustries.keys()), key="stock_subindustry_select")
+            sub_data = industries[selected_industry_stock]
+            
+            # Determine if sub-industries exist
+            if isinstance(sub_data, dict) and sub_data:
+                selected_subindustry_stock = st.selectbox("Sub-Industry", list(sub_data.keys()), key="stock_subindustry_select")
                 new_stock = st.text_input("New Stock:", key="stock_input")
                 if st.button("➕ Add Stock", key="add_stock"):
-                    stocks = subindustries[selected_subindustry_stock]
+                    stocks = sub_data[selected_subindustry_stock]
                     if new_stock and new_stock not in stocks:
                         stocks.append(new_stock)
                         save_data(sectors)
@@ -108,12 +113,23 @@ with col4:
                     else:
                         st.warning("Stock already exists or invalid.")
             else:
-                st.info("Add a sub-industry first.")
+                # Industry directly has stocks or empty dict
+                new_stock = st.text_input("New Stock:", key="stock_input_direct")
+                if st.button("➕ Add Stock Directly", key="add_stock_direct"):
+                    if isinstance(sub_data, dict):
+                        # Convert empty dict to stock list
+                        industries[selected_industry_stock] = []
+                        sub_data = industries[selected_industry_stock]
+                    if new_stock and new_stock not in sub_data:
+                        sub_data.append(new_stock)
+                        save_data(sectors)
+                        st.success(f"Added {new_stock} to {selected_industry_stock}")
+                    else:
+                        st.warning("Stock already exists or invalid.")
         else:
             st.info("Add an industry first.")
     else:
         st.info("Add a sector first.")
-
 
 # -------------------
 # Main Page Layout (Display)
@@ -133,7 +149,7 @@ for r in range(n_sector_rows):
         with cols[c]:
             # Sector Title
             st.markdown(
-                f"<h2 style='font-size:16px; color:#2C3E50; font-weight:800;'>🏦 {sector}</h2>",
+                f"<h2 style='font-size:20px; padding: 0px 0px 5px 0px; color:#2C3E50; font-weight:800;'>🏦 {sector}</h2>",
                 unsafe_allow_html=True
             )
 
@@ -143,30 +159,39 @@ for r in range(n_sector_rows):
                 for industry, sub_data in industries.items():
                     # Industry Title
                     st.markdown(
-                        f"<h4 style='font-size:14px; color:#34495E; font-weight:700;'>🏭 {industry}</h4>",
+                        f"<h4 style='font-size:16px; color:#34495E; padding: 20px 0px 15px 0px; font-weight:700;'>🏭 {industry}</h4>",
                         unsafe_allow_html=True
                     )
 
-                    if not sub_data:
-                        st.write("<p style='color:gray;'>No sub-industries yet.</p>", unsafe_allow_html=True)
-                    else:
-                        # Display sub-industries in 3 columns
-                        sub_keys = list(sub_data.keys())
-                        n_sub_rows = math.ceil(len(sub_keys) / 3)
-                        for sr in range(n_sub_rows):
-                            sub_cols = st.columns(3, gap="small")
-                            for sc in range(3):
-                                sub_idx = sr*3 + sc
-                                if sub_idx >= len(sub_keys):
-                                    break
-                                sub = sub_keys[sub_idx]
-                                stocks = sub_data[sub]
-                                with sub_cols[sc]:
-                                    st.markdown(f"<b style='color:#7F8C8D;'>📁 {sub}</b>", unsafe_allow_html=True)
-                                    if stocks:
-                                        stock_html = "<br>".join(
-                                            [f"<span style='font-size:12px; font-family: sans-serif;'>{s}</span>" for s in stocks]
-                                        )
-                                        st.markdown(stock_html, unsafe_allow_html=True)
-                                    else:
-                                        st.write("<p style='color:gray;'>No stocks yet.</p>", unsafe_allow_html=True)
+                    if isinstance(sub_data, dict):
+                        if not sub_data:
+                            st.write("<p style='color:gray;'>No sub-industries yet.</p>", unsafe_allow_html=True)
+                        else:
+                            # Display sub-industries in 3 columns
+                            sub_keys = list(sub_data.keys())
+                            n_sub_rows = math.ceil(len(sub_keys) / 3)
+                            for sr in range(n_sub_rows):
+                                sub_cols = st.columns(3, gap="small")
+                                for sc in range(3):
+                                    sub_idx = sr*3 + sc
+                                    if sub_idx >= len(sub_keys):
+                                        break
+                                    sub = sub_keys[sub_idx]
+                                    stocks = sub_data[sub]
+                                    with sub_cols[sc]:
+                                        st.markdown(f"<b style='color:#7F8C8D; font-size: 14px;'>📁 {sub}</b>", unsafe_allow_html=True)
+                                        if stocks:
+                                            stock_html = "<br>".join(
+                                                [f"<span style='font-size:12px; font-family: sans-serif;'>{s}</span>" for s in stocks]
+                                            )
+                                            st.markdown(stock_html, unsafe_allow_html=True)
+                                        else:
+                                            st.write("<p style='color:gray;'>No stocks yet.</p>", unsafe_allow_html=True)
+                    elif isinstance(sub_data, list):
+                        if sub_data:
+                            stock_html = "<br>".join(
+                                [f"<span style='font-size:12px; font-family: sans-serif;'>{s}</span>" for s in sub_data]
+                            )
+                            st.markdown(stock_html, unsafe_allow_html=True)
+                        else:
+                            st.write("<p style='color:gray;'>No stocks yet.</p>", unsafe_allow_html=True)

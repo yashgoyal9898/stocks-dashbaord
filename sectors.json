@@ -26,7 +26,16 @@
                 "BSE"
             ],
             "Credit Rating": []
-        }
+        },
+        "Insurance": [
+            "Star Health",
+            "SBI",
+            "LIC",
+            "Go Digit General"
+        ],
+        "FinTech": [
+            "PB Fintech"
+        ]
     },
     "Information Technology": {
         "Software": {
