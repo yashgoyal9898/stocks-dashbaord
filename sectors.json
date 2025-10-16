@@ -37,16 +37,154 @@
             "PB Fintech"
         ]
     },
-    "Information Technology": {
-        "Software": {
-            "IT Services": [
-                "TCS",
-                "INFY",
-                "HCLTECH"
+    "Healthcare and Pharma": {
+        "Pharmaceuticals, Biotechnology & Life Sciences": {
+            "Pharmaceuticals": [
+                "Natco Pharma Ltd",
+                "Caplin Point Lab",
+                "Sanofi India Ltd",
+                "Strides Pharma Science Ltd",
+                "OneSource Specialty Pharma Ltd",
+                "Blue Jet Healthcare Ltd"
             ],
-            "Product Companies": [
-                "OFSS"
+            "Biotech": [],
+            "API Players": [],
+            "Life Sciences / CRAMS": []
+        },
+        "Healthcare Equipment & Services": {
+            "Hospitals & Diagnostics": [
+                "Fortis",
+                "Rainbow Children",
+                "Yatharth Hospital",
+                "Thyrocare Technologies Ltd"
+            ],
+            "Medical Devices & Equipment": [
+                "Poly Medicure"
+            ],
+            "Ayurvedic / Retail Pharmacy": [
+                "Jeena Sikho Lifecare Ltd",
+                "Med Plus"
+            ],
+            "Healthcare Services (US Focus)": [
+                "Sagility India Ltd",
+                "Entero Healthcare Solutions Ltd",
+                "IKS"
             ]
-        }
+        },
+        "Misc": [
+            "Aprameya Engineering Ltd",
+            "Vasa denticity"
+        ]
+    },
+    "Information Technology": {
+        "IT / Tech Services": [
+            "Trident TechLabs",
+            "Aurionpro Solutions Ltd",
+            "Dynacons Systems & Solutions Ltd",
+            "Accelya Solutions India Ltd",
+            "AWFIS Space Solutions Ltd",
+            "POCL",
+            "Control Print",
+            "TAC Infosec",
+            "Kernex Micro",
+            "C2C Advanced System",
+            "Spectrum",
+            "360 One",
+            "Moschip Tech",
+            "Rashi Peripherals Ltd"
+        ],
+        "Software": [],
+        "Hardware": [],
+        "Infrastructure": []
+    },
+    "Telecom / Communication": {
+        "Network Services": [
+            "Suyog Telematics",
+            "Rail Tel Corporation",
+            "Route Mobile Ltd",
+            "Bharti Hexacom"
+        ],
+        "Telecom Infra": [
+            "sartele"
+        ],
+        "Equipment": [
+            "MISC",
+            "Optiemus Infracom Ltd",
+            "D link",
+            "HFCL",
+            "Tejas Network",
+            "Sterlite Technologies",
+            "Indus Towers",
+            "Tata Teleservices",
+            "STL Networks",
+            "ADC Communication",
+            "GTL Infra"
+        ]
+    },
+    "FMCG Essential": {
+        "Packaged Foods": {
+            "Dairy Products / Milk & Milk-based Products": [
+                "Dodla Dairy",
+                "Heritage Foods",
+                "Parag Milk Foods",
+                "Venky's"
+            ],
+            "Bakery & Biscuits / Packaged Snacks": [
+                "Mrs. Bector's Food",
+                "Gopal Snacks",
+                "Prataap Snacks",
+                "ADF Foods",
+                "Tasty Bite Eatables",
+                "Annapurna Swadisht"
+            ],
+            "Frozen / Ice Cream / Confectionery": [
+                "Vadilal Industries",
+                "Vadilal Enterprises",
+                "Lotus Chocolate"
+            ],
+            "Processed / Packaged Foods & Ingredients": [
+                "Hindustan Foods",
+                "Euro Fresh Foods"
+            ]
+        },
+        "Beverages": [
+            "Allied Blenders & Distillers Ltd"
+        ],
+        "Personal Care": [
+            "Zydus Wellness Ltd"
+        ],
+        "Household Products": [
+            "Jyothy Labs Ltd"
+        ],
+        "Dairy Products": [],
+        "Other / Retail": [
+            "Vishal Mega Mart Ltd",
+            "Flair Writing Industries Ltd"
+        ],
+        "Misc": [
+            "freshara agro"
+        ]
+    },
+    "Consumer Durables": {
+        "Consumer Electronics": [
+            "Pgel",
+            "Epack Durable",
+            "Eureka Forbes Ltd",
+            "Sheela Foam",
+            "yash optic"
+        ],
+        "Paint": [
+            "Kansai Nerolac Paints Ltd"
+        ],
+        "Gems, Jewelry, And Watches": [
+            "P N Gadgil Jewelers Ltd"
+        ],
+        "Ceramics": [
+            "Ganga Bath Fittings Ltd",
+            "greenlam"
+        ],
+        "EMS": [
+            "Elin Electronics Ltd"
+        ]
     }
 }

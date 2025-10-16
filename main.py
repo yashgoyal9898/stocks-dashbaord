@@ -149,7 +149,7 @@ for r in range(n_sector_rows):
         with cols[c]:
             # Sector Title
             st.markdown(
-                f"<h2 style='font-size:20px; padding: 0px 0px 5px 0px; color:#2C3E50; font-weight:800;'>🏦 {sector}</h2>",
+                f"<h2 style='font-size:20px; padding: 0px 0px 5px 0px; color:#2C3E50; font-weight:800;'>🏦 Sector: {sector}</h2>",
                 unsafe_allow_html=True
             )
 
