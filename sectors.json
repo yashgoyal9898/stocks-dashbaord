@@ -1,0 +1,30 @@
+{
+    "Financial Services": {
+        "Banks": {
+            "Private Banks": [
+                "HDFCBANK",
+                "ICICIBANK"
+            ],
+            "PSU Banks": [
+                "SBIN",
+                "PNB"
+            ]
+        },
+        "Finance": {
+            "NBFC": [],
+            "Housing Finance": []
+        }
+    },
+    "Information Technology": {
+        "Software": {
+            "IT Services": [
+                "TCS",
+                "INFY",
+                "HCLTECH"
+            ],
+            "Product Companies": [
+                "OFSS"
+            ]
+        }
+    }
+}
