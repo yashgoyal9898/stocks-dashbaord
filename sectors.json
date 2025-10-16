@@ -3,16 +3,29 @@
         "Banks": {
             "Private Banks": [
                 "HDFCBANK",
-                "ICICIBANK"
+                "ICICIBANK",
+                "Karur Vysya Bank Ltd"
             ],
-            "PSU Banks": [
+            "Public Banks": [
                 "SBIN",
                 "PNB"
             ]
         },
         "Finance": {
-            "NBFC": [],
+            "NBFC": [
+                "Fusion Finance",
+                "Fedbank",
+                "Northern Arc"
+            ],
             "Housing Finance": []
+        },
+        "Capital Markets": {
+            "Mutual Funds / AMCs": [
+                "NSDL",
+                "CDSL",
+                "BSE"
+            ],
+            "Credit Rating": []
         }
     },
     "Information Technology": {

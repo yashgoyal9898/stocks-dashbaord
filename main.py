@@ -151,7 +151,7 @@ for i, (sector, industries) in enumerate(sectors.items()):
                         # Stocks
                         if stocks:
                             stock_html = "<br>".join(
-                                [f"<span style='font-size:12px;'>{s}</span>" for s in stocks]
+                                [f"<span style='font-size:12px; font-family: sans-serif;'>{s}</span>" for s in stocks]
                             )
                             st.markdown(stock_html, unsafe_allow_html=True)
                         else:
