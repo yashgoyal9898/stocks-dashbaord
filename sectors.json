@@ -95,7 +95,11 @@
         ],
         "Software": [],
         "Hardware": [],
-        "Infrastructure": []
+        "Infrastructure": [],
+        "Security & Surveillance": [
+            "Prizor",
+            "SIS"
+        ]
     },
     "Telecom / Communication": {
         "Network Services": [
@@ -147,19 +151,37 @@
                 "Euro Fresh Foods"
             ]
         },
-        "Beverages": [
-            "Allied Blenders & Distillers Ltd"
-        ],
-        "Personal Care": [
-            "Zydus Wellness Ltd"
-        ],
-        "Household Products": [
-            "Jyothy Labs Ltd"
-        ],
-        "Dairy Products": [],
-        "Other / Retail": [
-            "Vishal Mega Mart Ltd",
-            "Flair Writing Industries Ltd"
+        "Other FMCG": {
+            "Beverages": [
+                "Allied Blenders & Distillers Ltd"
+            ],
+            "Personal Care": [
+                "Zydus Wellness Ltd"
+            ],
+            "Household Products": [
+                "Jyothy Labs Ltd"
+            ]
+        },
+        "Retail & E-commerce": {
+            "Organized Retail": [
+                "Ethos",
+                "PC Jeweller",
+                "Purple United Sales Ltd",
+                "Raymond Lifestyle",
+                "V2 Retail",
+                "Aditya Fashion",
+                "Thangamayil Jewellery"
+            ],
+            "Fashion & Lifestyle": [],
+            "Online Marketplaces": []
+        },
+        "Textile": [
+            "Garware",
+            "Swaraj Suitings",
+            "Vardhman",
+            "Pearl Global",
+            "Sai Silks",
+            "Lux Industries"
         ],
         "Misc": [
             "freshara agro"
@@ -186,5 +208,296 @@
         "EMS": [
             "Elin Electronics Ltd"
         ]
+    },
+    "Travel & Tourism": {
+        "Hotels / Hospitality / Leisure / QSR": {
+            "Hotels & Resorts": [
+                "Espire Hospitality Ltd",
+                "Juniper Hotels",
+                "Royal Orchid",
+                "Chalet Hotels",
+                "Lemon Tree Hotels",
+                "Mahindra Holidays & Resorts",
+                "Samhi Hotels",
+                "Apeejay Surrendra Park Hotels",
+                "Taj GVK Hotels & Resorts",
+                "Oriental Hotels",
+                "EIH Associated Hotels",
+                "Ventive",
+                "Grand Continent Hotels"
+            ],
+            "Leisure, Entertainment & Theme Parks": [
+                "Wonderla Holidays",
+                "Imagicaaworld Entertainment",
+                "Delta Corp",
+                "Nicco Parks & Resorts",
+                "South Asian Entertainment",
+                "Ajwa Fun World & Resort",
+                "Hanman Fit"
+            ],
+            "Restaurants / Food Services / QSR": [
+                "Travel Food Services Ltd"
+            ]
+        },
+        "Travel & Tourism Services": [
+            "IRCTCT",
+            "Yatra",
+            "Rategain Travel Technologies Ltd",
+            "MakeMyTrip",
+            "Cleartrip",
+            "SOTC Travel",
+            "Thomas Cook India",
+            "Cox & Kings (historical)",
+            "TBO Tek",
+            "International Travel House",
+            "EaseMyTrip",
+            "Crown Tours",
+            "Sailani Tours N Travel"
+        ],
+        "Transport": {
+            "Airlines / Railways / Road / Cruise": [
+                "Indigo",
+                "Air India",
+                "Akassa"
+            ],
+            "Airport & Ground Services": [
+                "GMR Airports",
+                "Dreamfolk Services"
+            ]
+        },
+        "Misc": [
+            "BLS International",
+            "Ecos India Mobility & Hospitality",
+            "Le Travenues Technology"
+        ]
+    },
+    "Automobiles & Auto Ancillaries": {
+        "Batteries": {
+            "Lithium-ion": [
+                "Exide Industries",
+                "Maxvolt Energy"
+            ]
+        },
+        "Vehicle Manufacturers": [
+            "Force Motors",
+            "SML ISUZU Ltd"
+        ],
+        "Auto Components": {
+            "Tier 1": [
+                "JTEKT India Ltd",
+                "Bosch",
+                "Bharat Seats",
+                "Lumax Auto / Lumax Industries Ltd",
+                "Sona BLW Precision Forgings Ltd",
+                "Pricol",
+                "Uno Minda Ltd",
+                "CIE Automotive",
+                "RACL Geartech",
+                "Carraro India Ltd",
+                "Sansera Engineering Ltd"
+            ],
+            "Tier 2": [
+                "Sharda",
+                "SJS Enterprise",
+                "Happy Forgings",
+                "NDR Auto Components Ltd",
+                "Fiem Industries Ltd",
+                "Car Trade Tech",
+                "Ask Automotive",
+                "Shriram Pistons & Rings Ltd",
+                "Banco Products (India) Ltd",
+                "Talbros Automotive",
+                "Varroc Eng"
+            ]
+        }
+    },
+    "Capital Goods": {
+        "Electrical Equipment": [
+            "S & S Power Switchgear Ltd",
+            "Bansal Wire Industries Ltd",
+            "Elecon Engineering",
+            "Exicom Tele-Systems Ltd"
+        ],
+        "Industrial Machinery / Specialty Equipment": [
+            "Vesuvius India Ltd",
+            "Tega Industries Ltd",
+            "Prince Pipes"
+        ],
+        "Aerospace & Defence / Electronics": [
+            "Cyient DLM Ltd",
+            "Centum Electronics Ltd"
+        ],
+        "Marine / Specialized Electrical": [
+            "Marine Electrical",
+            "Multi"
+        ],
+        "MIC": [
+            "MIC Electronics Ltd"
+        ],
+        "Misc": [
+            "Elgi Equipment Ltd",
+            "Centum Electronics Ltd",
+            "Avalon Technologies Ltd",
+            "Syrma SGS Technology Ltd"
+        ]
+    },
+    "Infrastructure & Construction": {
+        "Transport / Roads & Bridges": [
+            "RVNL (Rail & Road Projects)",
+            "Ashok Build Con",
+            "Man Infra",
+            "SRM Contractor"
+        ],
+        "Construction / Building Projects": [
+            "Shankara Building",
+            "Garuda Construction",
+            "Brigade Enterprises Ltd",
+            "Action Construction",
+            "Ahluwalia Contracts"
+        ],
+        "Construction Materials": [
+            "Kajaria Cernamic"
+        ],
+        "Real Estate & REITs": {
+            "Residential": [],
+            "Commercial": [],
+            "Industrial": [],
+            "REITs": []
+        },
+        "Energy": {
+            "Oil & Gas": [
+                "Deep Industries"
+            ],
+            "Renewable Energy (Solar, Wind)": []
+        },
+        "Utilities": {
+            "Power Generation / Transmission / Distribution / Water Utilities": [
+                "Batteries",
+                "HBL",
+                "Transformers",
+                "Apar Industries",
+                "Indo Tech",
+                "Transrail",
+                "Viviana Power Tech Ltd"
+            ]
+        }
+    },
+    "Chemicals": {
+        "Petrochemical": [
+            "Agarwal Industrial Corporation Ltd"
+        ],
+        "Inorganic": [
+            "Fertilizers & Agrochemicals"
+        ],
+        "Specialty Chemicals": [
+            "Astec Lifesciences Ltd",
+            "Anupam Rasayan India Ltd",
+            "ALKYL AMINES CHEMICALS",
+            "J.G.Chemicals Lt"
+        ],
+        "Polymers / Plastics": [
+            "Platinum Industries",
+            "Southern Petrochemical"
+        ],
+        "Industrial Chemicals / Materials": [
+            "BASF India Ltd",
+            "Jubilant Agri & Consumer Products Ltd",
+            "Foseco",
+            "PCB Chemical",
+            "Gujarat Fluorochemicals"
+        ],
+        "Glass & Packaging": [
+            "AGI Greenpac Ltd"
+        ]
+    },
+    "Metals & Mining": {
+        "Steel / Pipes (Steel & Fabrication)": [
+            "Pitti Engineering Ltd",
+            "SG Mart",
+            "Jindal Saw",
+            "Apollo Pipes",
+            "Maharashtra Seamless Ltd",
+            "Indian Metals & Ferro Alloys Ltd",
+            "APL Apollo Tubes Ltd",
+            "Welspun Corp Ltd",
+            "Ratnamani Metals",
+            "Steel Stripes"
+        ]
+    },
+    "Agriculture & Allied": {
+        "Pumps / Irrigation Equipment": [
+            "Oswal",
+            "Shakti",
+            "Kirloskar Brothers Ltd",
+            "Ravindra Energy Ltd"
+        ],
+        "Seeds": [],
+        "Fertilizers": [],
+        "Agrochemicals": [],
+        "Agri-Processing & Exports (Rice, Sugar, Dairy)": []
+    },
+    "Environmental & Waste Management": {
+        "Water Treatment": [
+            "EMS",
+            "VA Tech",
+            "Jash Engineering Ltd"
+        ],
+        "Waste Recycling": [
+            "Gravita India Ltd",
+            "Ganesha"
+        ],
+        "Pollution Control Solutions": [
+            "Knowledge Marine & Engineering"
+        ]
+    },
+    "Themes": {
+        "AI": [
+            "Affel 3i",
+            "Vertoz",
+            "Zensar",
+            "Tanla"
+        ],
+        "Logistics & Supply Chain": {
+            "Infra (Warehousing, Freight)": [
+                "Delhivery Ltd",
+                "Zinka Logistics",
+                "Container Corporation of India",
+                "Timescan Logistics"
+            ],
+            "Consumption (E-commerce)": [],
+            "Industrial (Manufacturing Supply Chain)": []
+        },
+        "Cement": [],
+        "Urban Infra": [],
+        "Defence & Aerospace": [],
+        "Digital Infrastructure": {
+            "Data Centers (AI Data Centers | Edge Computing Hubs | Cloud Services Providers)": [
+                "e2e",
+                "Netweb",
+                "Allied",
+                "Marine",
+                "Orient",
+                "Black Box",
+                "Aurionpro",
+                "Railtel",
+                "Sify"
+            ],
+            "Telecom (5G Base Stations & Small Cells | Optical Networking & Backhaul)": [],
+            "Robotics & Automation Components (Industrial Sensors, Servo Motors, PLCs, Pick & Place Robots)": []
+        },
+        "Cables and Wires": [],
+        "Transmission Theme": [],
+        "Green Energy Infrastructure Theme": [],
+        "Semiconductors & Electronic Manufacturing Services (EMS)": [
+            "ASM Technologies Ltd",
+            "MosChip Technologies Ltd",
+            "SPEL Semiconductor Ltd",
+            "Kaynes",
+            "Kernex",
+            "RIR",
+            "Sahasra Electronic"
+        ],
+        "Premium Consumption & Lifestyle Upgrade": [],
+        "Telemedicine": []
     }
 }
