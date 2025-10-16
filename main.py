@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 from pathlib import Path
+import math
 
 DATA_FILE = Path("sectors.json")
 
@@ -33,7 +34,6 @@ sectors = st.session_state.sectors
 # Top Control Panel (Add Elements)
 # -------------------
 st.markdown("### ⚙️ Manage Hierarchy")
-
 col1, col2, col3, col4 = st.columns(4)
 
 # === Add Sector ===
@@ -118,41 +118,55 @@ with col4:
 # -------------------
 # Main Page Layout (Display)
 # -------------------
-# Use 8 columns per row, with small gaps
-cols = st.columns(8, gap="small")
+sector_keys = list(sectors.keys())
+n_sector_rows = math.ceil(len(sector_keys) / 3)
 
-for i, (sector, industries) in enumerate(sectors.items()):
-    with cols[i % 8]:
-        # Sector Title
-        st.markdown(
-            f"<h2 style='font-size:16px; color:#2C3E50; font-weight:800;'>🏦 {sector}</h2>",
-            unsafe_allow_html=True
-        )
+for r in range(n_sector_rows):
+    cols = st.columns(3, gap="small")
+    for c in range(3):
+        idx = r*3 + c
+        if idx >= len(sector_keys):
+            break
+        sector = sector_keys[idx]
+        industries = sectors[sector]
 
-        if not industries:
-            st.write("<p style='color:gray;'>No industries yet.</p>", unsafe_allow_html=True)
-        else:
-            for industry, sub_data in industries.items():
-                # Industry Title
-                st.markdown(
-                    f"<h4 style='font-size:14px; color:#34495E; font-weight:700;'>🏭 {industry}</h4>",
-                    unsafe_allow_html=True
-                )
+        with cols[c]:
+            # Sector Title
+            st.markdown(
+                f"<h2 style='font-size:16px; color:#2C3E50; font-weight:800;'>🏦 {sector}</h2>",
+                unsafe_allow_html=True
+            )
 
-                if not sub_data:
-                    st.write("<p style='color:gray;'>No sub-industries yet.</p>", unsafe_allow_html=True)
-                else:
-                    for sub, stocks in sub_data.items():
-                        # Sub-Industry
-                        st.markdown(
-                            f"<b style='color:#7F8C8D;'>📁 {sub}</b>",
-                            unsafe_allow_html=True
-                        )
-                        # Stocks
-                        if stocks:
-                            stock_html = "<br>".join(
-                                [f"<span style='font-size:12px; font-family: sans-serif;'>{s}</span>" for s in stocks]
-                            )
-                            st.markdown(stock_html, unsafe_allow_html=True)
-                        else:
-                            st.write("<p style='color:gray;'>No stocks yet.</p>", unsafe_allow_html=True)
+            if not industries:
+                st.write("<p style='color:gray;'>No industries yet.</p>", unsafe_allow_html=True)
+            else:
+                for industry, sub_data in industries.items():
+                    # Industry Title
+                    st.markdown(
+                        f"<h4 style='font-size:14px; color:#34495E; font-weight:700;'>🏭 {industry}</h4>",
+                        unsafe_allow_html=True
+                    )
+
+                    if not sub_data:
+                        st.write("<p style='color:gray;'>No sub-industries yet.</p>", unsafe_allow_html=True)
+                    else:
+                        # Display sub-industries in 3 columns
+                        sub_keys = list(sub_data.keys())
+                        n_sub_rows = math.ceil(len(sub_keys) / 3)
+                        for sr in range(n_sub_rows):
+                            sub_cols = st.columns(3, gap="small")
+                            for sc in range(3):
+                                sub_idx = sr*3 + sc
+                                if sub_idx >= len(sub_keys):
+                                    break
+                                sub = sub_keys[sub_idx]
+                                stocks = sub_data[sub]
+                                with sub_cols[sc]:
+                                    st.markdown(f"<b style='color:#7F8C8D;'>📁 {sub}</b>", unsafe_allow_html=True)
+                                    if stocks:
+                                        stock_html = "<br>".join(
+                                            [f"<span style='font-size:12px; font-family: sans-serif;'>{s}</span>" for s in stocks]
+                                        )
+                                        st.markdown(stock_html, unsafe_allow_html=True)
+                                    else:
+                                        st.write("<p style='color:gray;'>No stocks yet.</p>", unsafe_allow_html=True)
