@@ -5,9 +5,6 @@ import math
 
 DATA_FILE = Path("sectors.json")
 
-# -------------------
-# Helper Functions
-# -------------------
 def load_data():
     if DATA_FILE.exists():
         with open(DATA_FILE, "r") as f:
@@ -19,14 +16,12 @@ def save_data(data):
         json.dump(data, f, indent=4)
 
 def format_stock_display(stock):
-    """Return stock name with stars if rating exists"""
     if isinstance(stock, dict):
         stars = "★" * stock.get("rating", 0)
         return f"{stock['name']} {stars}"
     return stock
 
 def flatten_stocks(sectors):
-    """Flatten all stocks with full path for rating dropdown"""
     all_stocks_list = []
     for sector_name, sector_data in sectors.items():
         for industry, sub_data in sector_data.items():
@@ -58,7 +53,7 @@ sectors = st.session_state.sectors
 # Top Control Panel (Add Elements)
 # -------------------
 st.markdown("### ⚙️ Manage Hierarchy")
-col1, col2, col3, col4, col5= st.columns(5)
+col1, col2, col3, col4 = st.columns(4)
 
 # --- Add Sector ---
 with col1:
@@ -152,76 +147,15 @@ with col4:
         st.info("Add a sector first.")
 
 # -------------------
-# Rating Section
-# -------------------
-with col5:
-    st.markdown("### ⭐ Rate a Stock")
-
-    all_stocks_list = flatten_stocks(sectors)
-
-    stock_dropdown = [
-        f"{s[3]} ({s[0]} / {s[1]}" + (f" / {s[2]}" if s[2] else "") + ")"
-        for s in all_stocks_list
-    ]
-
-    if stock_dropdown:
-        selected_stock_str = st.selectbox("Select Stock to Rate:", stock_dropdown)
-        selected_idx = stock_dropdown.index(selected_stock_str)
-        sector_name, industry, sub_industry, stock_name = all_stocks_list[selected_idx]
-
-        if sub_industry:
-            stock_list = sectors[sector_name][industry][sub_industry]
-        else:
-            stock_list = sectors[sector_name][industry]
-
-        current_rating = 0
-        for s_item in stock_list:
-            if isinstance(s_item, dict) and s_item["name"] == stock_name:
-                current_rating = s_item.get("rating", 0)
-                break
-            elif isinstance(s_item, str) and s_item == stock_name:
-                current_rating = 0
-                break
-
-        # Updated radio button with 0-5 stars
-        rating = st.radio(
-            f"Rate {stock_name}",
-            [0, 1, 2, 3, 4, 5],
-            index=current_rating if current_rating else 0,
-            format_func=lambda x: "No Rating" if x==0 else "★"*x,
-            horizontal=True
-        )
-
-        if st.button("Save Rating"):
-            for i, s_item in enumerate(stock_list):
-                if isinstance(s_item, dict) and s_item["name"] == stock_name:
-                    if rating == 0:
-                        # Remove rating key if 0
-                        s_item.pop("rating", None)
-                    else:
-                        s_item["rating"] = rating
-                    break
-                elif isinstance(s_item, str) and s_item == stock_name:
-                    if rating == 0:
-                        stock_list[i] = s_item  # keep as string without rating
-                    else:
-                        stock_list[i] = {"name": stock_name, "rating": rating}
-                    break
-            save_data(sectors)
-            st.success(f"Saved rating {rating} {'★'*rating if rating else ''} for {stock_name}")
-    else:
-        st.info("No stocks available to rate.")
-
-# -------------------
 # Main Dashboard Display
 # -------------------
 sector_keys = list(sectors.keys())
-n_sector_rows = math.ceil(len(sector_keys) / 3)
+n_sector_rows = math.ceil(len(sector_keys) / 4)  # 4 sectors per row
 
 for r in range(n_sector_rows):
-    cols = st.columns(3, gap="small")
-    for c in range(3):
-        idx = r*3 + c
+    cols = st.columns(4, gap="small")  # 4 columns for sectors
+    for c in range(4):
+        idx = r*4 + c
         if idx >= len(sector_keys):
             break
         sector = sector_keys[idx]
@@ -229,7 +163,7 @@ for r in range(n_sector_rows):
 
         with cols[c]:
             st.markdown(
-                f"<h2 style='font-size:20px; padding: 0px 0px 5px 0px; color:#2C3E50; font-weight:800;'>🏦 Sector: {sector}</h2>",
+                f"<h2 style='font-size:20px; padding: 0px 0px 5px 0px; color:#2C3E50; font-weight:800;'>🏦 {sector}</h2>",
                 unsafe_allow_html=True
             )
 
@@ -242,16 +176,17 @@ for r in range(n_sector_rows):
                         unsafe_allow_html=True
                     )
 
+                    # If sub-industries exist, use 2 columns per row
                     if isinstance(sub_data, dict):
                         if not sub_data:
                             st.write("<p style='color:gray;'>No sub-industries yet.</p>", unsafe_allow_html=True)
                         else:
                             sub_keys = list(sub_data.keys())
-                            n_sub_rows = math.ceil(len(sub_keys) / 3)
+                            n_sub_rows = math.ceil(len(sub_keys) / 2)  # 2 columns per sub-industry row
                             for sr in range(n_sub_rows):
-                                sub_cols = st.columns(3, gap="small")
-                                for sc in range(3):
-                                    sub_idx = sr*3 + sc
+                                sub_cols = st.columns(2, gap="small")
+                                for sc in range(2):
+                                    sub_idx = sr*2 + sc
                                     if sub_idx >= len(sub_keys):
                                         break
                                     sub = sub_keys[sub_idx]
@@ -265,6 +200,8 @@ for r in range(n_sector_rows):
                                             st.markdown(stock_html, unsafe_allow_html=True)
                                         else:
                                             st.write("<p style='color:gray;'>No stocks yet.</p>", unsafe_allow_html=True)
+
+                    # If industry directly has a stock list
                     elif isinstance(sub_data, list):
                         if sub_data:
                             stock_html = "<br>".join(
