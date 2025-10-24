@@ -77,29 +77,28 @@
         ]
     },
     "Information Technology": {
-        "IT / Tech Services": [
-            "Trident TechLabs",
-            "Aurionpro Solutions Ltd",
-            "Dynacons Systems & Solutions Ltd",
-            "Accelya Solutions India Ltd",
-            "AWFIS Space Solutions Ltd",
-            "POCL",
-            "Control Print",
-            "TAC Infosec",
-            "Kernex Micro",
-            "C2C Advanced System",
-            "Spectrum",
-            "360 One",
-            "Moschip Tech",
-            "Rashi Peripherals Ltd"
-        ],
-        "Software": [],
-        "Hardware": [],
-        "Infrastructure": [],
-        "Security & Surveillance": [
-            "Prizor",
-            "SIS"
-        ]
+        "Information Technology": {
+            "Services": [
+                "Trident TechLabs",
+                "Aurionpro Solutions Ltd",
+                "Dynacons Systems & Solutions Ltd",
+                "Accelya Solutions India Ltd",
+                "AWFIS Space Solutions Ltd",
+                "POCL",
+                "Control Print",
+                "TAC Infosec",
+                "Kernex Micro",
+                "C2C Advanced System",
+                "Spectrum",
+                "360 One",
+                "Moschip Tech",
+                "Rashi Peripherals Ltd"
+            ],
+            "Security & Surveillance": [
+                "Prizor",
+                "SIS"
+            ]
+        }
     },
     "Telecom / Communication": {
         "Network Services": [

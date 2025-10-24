@@ -146,67 +146,168 @@ with col4:
     else:
         st.info("Add a sector first.")
 
-# -------------------
-# Main Dashboard Display
-# -------------------
+
+# Custom CSS for better styling
+st.markdown("""
+<style>
+    .sector-card {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-left: 4px solid #3498db;
+    }
+    .industry-header {
+        background: #ecf0f1;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+    .sub-industry-box {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 5px 0;
+        height: 100%;
+    }
+    .stock-item {
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 13px;
+    }
+    .stock-item:last-child {
+        border-bottom: none;
+    }
+    .empty-state {
+        color: #95a5a6;
+        font-style: italic;
+        font-size: 12px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+
+def format_stock_display(stock_info):
+    """
+    Format stock display with symbol, name, and optional metrics
+    stock_info can be string or dict with details
+    """
+    if isinstance(stock_info, str):
+        return f"<span style='color:#2c3e50; font-weight:500;'>{stock_info}</span>"
+    elif isinstance(stock_info, dict):
+        symbol = stock_info.get('symbol', 'N/A')
+        name = stock_info.get('name', '')
+        price = stock_info.get('price', '')
+        change = stock_info.get('change', 0)
+        
+        # Color based on change
+        color = "#27ae60" if change > 0 else "#e74c3c" if change < 0 else "#95a5a6"
+        change_symbol = "▲" if change > 0 else "▼" if change < 0 else "●"
+        
+        display = f"<span style='color:#2c3e50; font-weight:600;'>{symbol}</span>"
+        if name:
+            display += f"<span style='color:#7f8c8d; font-size:11px;'> - {name}</span>"
+        if price:
+            display += f"<span style='color:#34495e; margin-left:5px;'>₹{price}</span>"
+        if change:
+            display += f"<span style='color:{color}; margin-left:5px;'>{change_symbol} {abs(change)}%</span>"
+        
+        return display
+    return str(stock_info)
+
+
+# Main Dashboard Layout
 sector_keys = list(sectors.keys())
-n_sector_rows = math.ceil(len(sector_keys) / 4)  # 4 sectors per row
+n_sector_rows = math.ceil(len(sector_keys) / 3)  # 3 sectors per row
 
 for r in range(n_sector_rows):
-    cols = st.columns(4, gap="small")  # 4 columns for sectors
-    for c in range(4):
-        idx = r*4 + c
+    cols = st.columns(3, gap="medium")
+    
+    for c in range(3):
+        idx = r*3 + c
         if idx >= len(sector_keys):
             break
+        
         sector = sector_keys[idx]
         industries = sectors[sector]
-
+        
         with cols[c]:
-            st.markdown(
-                f"<h2 style='font-size:20px; padding: 0px 0px 5px 0px; color:#2C3E50; font-weight:800;'>🏦 {sector}</h2>",
-                unsafe_allow_html=True
-            )
-
-            if not industries:
-                st.write("<p style='color:gray;'>No industries yet.</p>", unsafe_allow_html=True)
-            else:
-                for industry, sub_data in industries.items():
-                    st.markdown(
-                        f"<h4 style='font-size:16px; color:#34495E; padding: 20px 0px 15px 0px; font-weight:700;'>🏭 {industry}</h4>",
-                        unsafe_allow_html=True
-                    )
-
-                    # If sub-industries exist, use 2 columns per row
-                    if isinstance(sub_data, dict):
-                        if not sub_data:
-                            st.write("<p style='color:gray;'>No sub-industries yet.</p>", unsafe_allow_html=True)
-                        else:
-                            sub_keys = list(sub_data.keys())
-                            n_sub_rows = math.ceil(len(sub_keys) / 2)  # 2 columns per sub-industry row
-                            for sr in range(n_sub_rows):
-                                sub_cols = st.columns(2, gap="small")
-                                for sc in range(2):
-                                    sub_idx = sr*2 + sc
-                                    if sub_idx >= len(sub_keys):
-                                        break
-                                    sub = sub_keys[sub_idx]
-                                    stocks = sub_data[sub]
-                                    with sub_cols[sc]:
-                                        st.markdown(f"<b style='color:#7F8C8D; font-size: 14px;'>📁 {sub}</b>", unsafe_allow_html=True)
-                                        if stocks:
-                                            stock_html = "<br>".join(
-                                                [f"<span style='font-size:12px; font-family: sans-serif;'>{format_stock_display(s)}</span>" for s in stocks]
-                                            )
-                                            st.markdown(stock_html, unsafe_allow_html=True)
-                                        else:
-                                            st.write("<p style='color:gray;'>No stocks yet.</p>", unsafe_allow_html=True)
-
-                    # If industry directly has a stock list
-                    elif isinstance(sub_data, list):
-                        if sub_data:
-                            stock_html = "<br>".join(
-                                [f"<span style='font-size:12px; font-family: sans-serif;'>{format_stock_display(s)}</span>" for s in sub_data]
-                            )
-                            st.markdown(stock_html, unsafe_allow_html=True)
-                        else:
-                            st.write("<p style='color:gray;'>No stocks yet.</p>", unsafe_allow_html=True)
+            # Sector Header with expander for collapsible view
+            with st.expander(f"🏦 **{sector}**", expanded=False):
+                
+                if not industries:
+                    st.markdown("<p class='empty-state'>No industries added</p>", unsafe_allow_html=True)
+                else:
+                    for industry, sub_data in industries.items():
+                        # Industry Header
+                        st.markdown(f"""
+                            <div class='industry-header'>
+                                <strong style='color:#2c3e50; font-size:15px;'>🏭 {industry}</strong>
+                            </div>
+                        """, unsafe_allow_html=True)
+                        
+                        # Check if sub_data is dict (has sub-industries) or list (direct stocks)
+                        if isinstance(sub_data, dict):
+                            if not sub_data:
+                                st.markdown("<p class='empty-state'>No sub-industries</p>", unsafe_allow_html=True)
+                            else:
+                                # Display sub-industries in TWO COLUMNS
+                                sub_keys = list(sub_data.keys())
+                                n_sub_rows = math.ceil(len(sub_keys) / 2)
+                                
+                                for sub_row in range(n_sub_rows):
+                                    sub_cols = st.columns(2, gap="small")
+                                    
+                                    for sub_col in range(2):
+                                        sub_idx = sub_row * 2 + sub_col
+                                        if sub_idx >= len(sub_keys):
+                                            break
+                                        
+                                        sub = sub_keys[sub_idx]
+                                        stocks = sub_data[sub]
+                                        
+                                        with sub_cols[sub_col]:
+                                            # Sub-industry with stock count
+                                            stock_count = len(stocks) if stocks else 0
+                                            st.markdown(f"""
+                                                <div class='sub-industry-box'>
+                                                    <strong style='color:#7f8c8d; font-size:13px;'>
+                                                        📁 {sub} ({stock_count})
+                                                    </strong>
+                                            """, unsafe_allow_html=True)
+                                            
+                                            if stocks:
+                                                for s in stocks:
+                                                    st.markdown(
+                                                        f"<div class='stock-item'>• {format_stock_display(s)}</div>",
+                                                        unsafe_allow_html=True
+                                                    )
+                                            else:
+                                                st.markdown("<p class='empty-state'>No stocks</p>", unsafe_allow_html=True)
+                                            
+                                            st.markdown("</div>", unsafe_allow_html=True)
+                        
+                        elif isinstance(sub_data, list):
+                            # Direct stock list under industry - Display in TWO COLUMNS
+                            if sub_data:
+                                n_stock_rows = math.ceil(len(sub_data) / 2)
+                                
+                                for stock_row in range(n_stock_rows):
+                                    stock_cols = st.columns(2, gap="small")
+                                    
+                                    for stock_col in range(2):
+                                        stock_idx = stock_row * 2 + stock_col
+                                        if stock_idx >= len(sub_data):
+                                            break
+                                        
+                                        with stock_cols[stock_col]:
+                                            st.markdown(f"""
+                                                <div class='sub-industry-box'>
+                                                    <div class='stock-item'>• {format_stock_display(sub_data[stock_idx])}</div>
+                                                </div>
+                                            """, unsafe_allow_html=True)
+                            else:
+                                st.markdown("<p class='empty-state'>No stocks</p>", unsafe_allow_html=True)
+                        
+                        st.markdown("<br>", unsafe_allow_html=True)
