@@ -208,8 +208,8 @@
             "Elin Electronics Ltd"
         ]
     },
-    "Travel & Tourism": {
-        "Hotels / Hospitality / Leisure / QSR": {
+    "Travel and Tourism services": {
+        "Travel & Tourism": {
             "Hotels & Resorts": [
                 "Espire Hospitality Ltd",
                 "Juniper Hotels",
@@ -225,7 +225,7 @@
                 "Ventive",
                 "Grand Continent Hotels"
             ],
-            "Leisure, Entertainment & Theme Parks": [
+            "Theme Parks": [
                 "Wonderla Holidays",
                 "Imagicaaworld Entertainment",
                 "Delta Corp",
@@ -234,26 +234,24 @@
                 "Ajwa Fun World & Resort",
                 "Hanman Fit"
             ],
-            "Restaurants / Food Services / QSR": [
+            "Restaurants / QSR": [
                 "Travel Food Services Ltd"
-            ]
-        },
-        "Travel & Tourism Services": [
-            "IRCTCT",
-            "Yatra",
-            "Rategain Travel Technologies Ltd",
-            "MakeMyTrip",
-            "Cleartrip",
-            "SOTC Travel",
-            "Thomas Cook India",
-            "Cox & Kings (historical)",
-            "TBO Tek",
-            "International Travel House",
-            "EaseMyTrip",
-            "Crown Tours",
-            "Sailani Tours N Travel"
-        ],
-        "Transport": {
+            ],
+            "Travel & Tourism operators": [
+                "IRCTCT",
+                "Yatra",
+                "Rategain Travel Technologies Ltd",
+                "MakeMyTrip",
+                "Cleartrip",
+                "SOTC Travel",
+                "Thomas Cook India",
+                "Cox & Kings (historical)",
+                "TBO Tek",
+                "International Travel House",
+                "EaseMyTrip",
+                "Crown Tours",
+                "Sailani Tours N Travel"
+            ],
             "Airlines / Railways / Road / Cruise": [
                 "Indigo",
                 "Air India",
@@ -262,13 +260,13 @@
             "Airport & Ground Services": [
                 "GMR Airports",
                 "Dreamfolk Services"
+            ],
+            "Misc": [
+                "BLS International",
+                "Ecos India Mobility & Hospitality",
+                "Le Travenues Technology"
             ]
-        },
-        "Misc": [
-            "BLS International",
-            "Ecos India Mobility & Hospitality",
-            "Le Travenues Technology"
-        ]
+        }
     },
     "Automobiles & Auto Ancillaries": {
         "Batteries": {
@@ -449,54 +447,56 @@
             "Knowledge Marine & Engineering"
         ]
     },
-    "Themes": {
-        "AI": [
-            "Affel 3i",
-            "Vertoz",
-            "Zensar",
-            "Tanla"
-        ],
-        "Logistics & Supply Chain": {
-            "Infra (Warehousing, Freight)": [
-                "Delhivery Ltd",
-                "Zinka Logistics",
-                "Container Corporation of India",
-                "Timescan Logistics"
+    "themes": {
+        "Themes": {
+            "AI": [
+                "Affel 3i",
+                "Vertoz",
+                "Zensar",
+                "Tanla"
             ],
-            "Consumption (E-commerce)": [],
-            "Industrial (Manufacturing Supply Chain)": []
-        },
-        "Cement": [],
-        "Urban Infra": [],
-        "Defence & Aerospace": [],
-        "Digital Infrastructure": {
-            "Data Centers (AI Data Centers | Edge Computing Hubs | Cloud Services Providers)": [
-                "e2e",
-                "Netweb",
-                "Allied",
-                "Marine",
-                "Orient",
-                "Black Box",
-                "Aurionpro",
-                "Railtel",
-                "Sify"
+            "Logistics & Supply Chain": {
+                "Infra (Warehousing, Freight)": [
+                    "Delhivery Ltd",
+                    "Zinka Logistics",
+                    "Container Corporation of India",
+                    "Timescan Logistics"
+                ],
+                "Consumption (E-commerce)": [],
+                "Industrial (Manufacturing Supply Chain)": []
+            },
+            "Cement": [],
+            "Urban Infra": [],
+            "Defence & Aerospace": [],
+            "Digital Infrastructure": {
+                "Data Centers (AI Data Centers | Edge Computing Hubs | Cloud Services Providers)": [
+                    "e2e",
+                    "Netweb",
+                    "Allied",
+                    "Marine",
+                    "Orient",
+                    "Black Box",
+                    "Aurionpro",
+                    "Railtel",
+                    "Sify"
+                ],
+                "Telecom (5G Base Stations & Small Cells | Optical Networking & Backhaul)": [],
+                "Robotics & Automation Components (Industrial Sensors, Servo Motors, PLCs, Pick & Place Robots)": []
+            },
+            "Cables and Wires": [],
+            "Transmission Theme": [],
+            "Green Energy Infrastructure Theme": [],
+            "Semiconductors & Electronic Manufacturing Services (EMS)": [
+                "ASM Technologies Ltd",
+                "MosChip Technologies Ltd",
+                "SPEL Semiconductor Ltd",
+                "Kaynes",
+                "Kernex",
+                "RIR",
+                "Sahasra Electronic"
             ],
-            "Telecom (5G Base Stations & Small Cells | Optical Networking & Backhaul)": [],
-            "Robotics & Automation Components (Industrial Sensors, Servo Motors, PLCs, Pick & Place Robots)": []
-        },
-        "Cables and Wires": [],
-        "Transmission Theme": [],
-        "Green Energy Infrastructure Theme": [],
-        "Semiconductors & Electronic Manufacturing Services (EMS)": [
-            "ASM Technologies Ltd",
-            "MosChip Technologies Ltd",
-            "SPEL Semiconductor Ltd",
-            "Kaynes",
-            "Kernex",
-            "RIR",
-            "Sahasra Electronic"
-        ],
-        "Premium Consumption & Lifestyle Upgrade": [],
-        "Telemedicine": []
+            "Premium Consumption & Lifestyle Upgrade": [],
+            "Telemedicine": []
+        }
     }
 }
