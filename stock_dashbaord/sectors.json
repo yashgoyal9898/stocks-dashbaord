@@ -466,13 +466,38 @@
                 "Zensar",
                 "Tanla"
             ],
+            "Logistics & Supply Chain": {
+                "Infra (Warehousing, Freight)": [
+                    "Delhivery Ltd",
+                    "Zinka Logistics",
+                    "Container Corporation of India",
+                    "Timescan Logistics"
+                ],
+                "Consumption (E-commerce)": [],
+                "Industrial (Manufacturing Supply Chain)": []
+            },
             "Cement": [],
             "Urban Infra": [],
             "Defence & Aerospace": [],
+            "Digital Infrastructure": {
+                "Data Centers (AI Data Centers | Edge Computing Hubs | Cloud Services Providers)": [
+                    "e2e",
+                    "Netweb",
+                    "Allied",
+                    "Marine",
+                    "Orient",
+                    "Black Box",
+                    "Aurionpro",
+                    "Railtel",
+                    "Sify"
+                ],
+                "Telecom (5G Base Stations & Small Cells | Optical Networking & Backhaul)": [],
+                "Robotics & Automation Components (Industrial Sensors, Servo Motors, PLCs, Pick & Place Robots)": []
+            },
             "Cables and Wires": [],
             "Transmission Theme": [],
             "Green Energy Infrastructure Theme": [],
-            "Semiconductors": [
+            "Semiconductors & Electronic Manufacturing Services (EMS)": [
                 "ASM Technologies Ltd",
                 "MosChip Technologies Ltd",
                 "SPEL Semiconductor Ltd",
